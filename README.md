@@ -9,14 +9,17 @@ The government from Paranuara provided two json files (located at resource folde
 
 The government of Paranuara requires a web-based API that returns json with the following endpoints
 
-`/v1/companies/\<index\>/employees`
-  Returns all employees for the company represented by index `:index`.
+- `/v1/companies/<index>/employees`
 
-`/v1/people/\<index\>/special-common-friends-with?index_other=\<index_other\>`
-  Given 2 people, identified by `\<index1\>` and `\<index2\>`, provides their information (Name, Age, Address, phone) and the list of their friends in common which have brown eyes and are still alive.
+  Returns all employees for the company represented by index `<index>`.
 
-`/v1/people/<index>/diet-preferences`
-  Given a person's `\<index\>`, provides a list of fruits and vegetables they like as `{"username": "Ahi", "age": "30", "fruits": ["banana", "apple"], "vegetables": ["beetroot", "lettuce"]}`
+- `/v1/people/<index>/special-common-friends-with?index_other=<index_other>`
+
+  Given 2 people, identified by `<index1>` and `<index_other>`, provides their information (Name, Age, Address, phone) and the list of their friends in common which have brown eyes and are still alive.
+
+- `/v1/people/<index>/diet-preferences`
+
+  Given a person's `<index>`, provides a list of fruits and vegetables they like as `{"username": "Ahi", "age": "30", "fruits": ["banana", "apple"], "vegetables": ["beetroot", "lettuce"]}`
 
 The host and port are described later in this document.
 
@@ -24,11 +27,13 @@ The host and port are described later in this document.
 
 Government data is organised as follows:
 
-`companies.json`: list of records, structured as
+- `companies.json`: list of records, structured as
+
   `index`: integer; a public key used in the API (see below)
   `company`: string; company name
 
-`people.json`: list of records, structured as
+- `people.json`: list of records, structured as
+
   `_id`: string, hashed id (?)
   `index`: integer, public key
   `has_died`: boolean
@@ -54,7 +59,8 @@ Government data is organised as follows:
 
 As can be seen, there is no classification for fruits and vegetables. After careful analysis, our ETL team has provided a classification which has been added to the resources folder in `food_classes.json`, as follows:
 
-`food_classes.json`: list of records, structured as
+- `food_classes.json`: list of records, structured as
+
   `food`: string
   `kind`: string, either 'fruit' or 'vegetable'
 
@@ -68,7 +74,7 @@ The solution is delivered as a docker container that makes use of installed mong
 
 Only for Unix/Linux systems and MAC OS X.
 
-- Install MongoDB in host; the app requires a standard _unsecured_ install on host on port 27017.
+- Install [MongoDB](https://www.mongodb.com) in host; the app requires a standard _unsecured_ install on host on port 27017.
 
 - Install [Docker](https://www.docker.com/get-docker)
 
@@ -80,17 +86,17 @@ With small changes this may work on Windows. This has been tested only on MAC OS
 
 ### Installation
 
-- Clone this repo
+Clone this repo
 
     $ git clone https://github.com/carlosayam/paranuara
 
-- To setup docker image and populate the database, run in shell
+To setup docker image and populate the database, run in shell
 
     $ install
 
 ## Usage
 
-Start `mongod` on standard port (27017). Then run in shell
+Start `mongod` on standard port (27017), with _unsecured_ access. Then run in shell
 
     $ run
 
