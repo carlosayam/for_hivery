@@ -1,0 +1,10 @@
+[
+{"food": "beetroot", "kind": "vegetable"},
+{"food": "apple", "kind": "fruit"},
+{"food": "celery", "kind": "vegetable"},
+{"food": "strawberry", "kind": "fruit"},
+{"food": "carrot", "kind": "vegetable"},
+{"food": "cucumber", "kind": "vegetable"},
+{"food": "orange", "kind": "fruit"},
+{"food": "banana", "kind": "fruit"}
+]
